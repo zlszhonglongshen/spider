@@ -4,8 +4,36 @@
 import urllib
 import urllib2
 import re
-import tool
 import os
+import time
+# 处理页面标签类
+class Tool:
+    # 去除img标签,1-7位空格,
+    removeImg = re.compile('<img.*?>| {1,7}| ')
+    # 删除超链接标签
+    removeAddr = re.compile('<a.*?>|</a>')
+    # 把换行的标签换为\n
+    replaceLine = re.compile('<tr>|<div>|</div>|</p>')
+    # 将表格制表<td>替换为\t
+    replaceTD = re.compile('<td>')
+    # 将换行符或双换行符替换为\n
+    replaceBR = re.compile('<br><br>|<br>')
+    # 将其余标签剔除
+    removeExtraTag = re.compile('<.*?>')
+    # 将多行空行删除
+    removeNoneLine = re.compile('\n+')
+
+    def replace(self, x):
+        x = re.sub(self.removeImg, "", x)
+        x = re.sub(self.removeAddr, "", x)
+        x = re.sub(self.replaceLine, "\n", x)
+        x = re.sub(self.replaceTD, "\t", x)
+        x = re.sub(self.replaceBR, "\n", x)
+        x = re.sub(self.removeExtraTag, "", x)
+        x = re.sub(self.removeNoneLine, "\n", x)
+        # strip()将前后多余内容删除
+        return x.strip()
+
 
 #抓取MM
 class Spider:
@@ -13,7 +41,7 @@ class Spider:
     #页面初始化
     def __init__(self):
         self.siteURL = 'http://mm.taobao.com/json/request_top_list.htm'
-        self.tool = tool.Tool()
+        self.tool = Tool()
 
     #获取索引页面的内容
     def getPage(self,pageIndex):
@@ -132,6 +160,7 @@ class Spider:
             self.saveIcon(item[1],item[2])
             #保存图片
             self.saveImgs(images,item[2])
+            time.sleep(5)
 
     #传入起止页码，获取MM图片
     def savePagesInfo(self,start,end):
@@ -141,4 +170,5 @@ class Spider:
 
 #传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
 spider = Spider()
-spider.savePagesInfo(2,10)
+# spider.savePagesInfo(2,10)
+spider.savePageInfo(1)
