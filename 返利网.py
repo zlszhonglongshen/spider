@@ -1,5 +1,6 @@
 # encoding=utf-8
 import urllib2
+import urllib.request
 from bs4 import BeautifulSoup
 import time
 # 返利网值得买页面的源代码中只包含5条数据，
