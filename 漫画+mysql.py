@@ -24,7 +24,7 @@ def get_img(url):
     # 获取每个页面中每一话漫画对应的链接
     url_list = get_url_list(url)
     # 连接mysql数据库
-    conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='', db='test')
+    conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='', db='mysql')
     # 创建游标
     c = conn.cursor()
     try:
