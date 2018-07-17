@@ -1,3 +1,4 @@
+#coding:utf-8
 import pymongo
 import requests, codecs
 import pymongo, time
@@ -5,7 +6,7 @@ from lxml import html
 from multiprocessing import Pool
 
 client = pymongo.MongoClient('mongodb://localhost:27017')
-db = client['testdb']
+db = client['local']
 myset = db['beike']
 
 
