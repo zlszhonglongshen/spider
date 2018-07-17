@@ -1,10 +1,10 @@
 #coding:utf-8
 import requests
 from bs4 import BeautifulSoup
-import MySQLdb
+import pymysql
 
 print("链接mysql")
-db = MySQLdb.connect(host="127.0.0.1",user="root",passwd="root",db="mysql")
+db = pymysql.connect(host="127.0.0.1",user="root",passwd="",db="mysql")
 print("链接成功！！！")
 cursor = db.cursor()
 cursor.execute("drop table if exists color")
@@ -32,4 +32,4 @@ for tr in trs:
     data_color = (name, hex, style)
     cursor.execute(insert_color, data_color)
     db.commit()
-    # print '******完成此条插入!'
+    print ('******完成此条插入!')
