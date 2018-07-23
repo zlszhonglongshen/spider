@@ -13,8 +13,8 @@ from multiprocessing import Pool
 
 
 MONGO_URL = 'localhost'
-MONGON_DB = 'test'
-MONGO_TABLE = 'toutiao'
+MONGON_DB = 'toutiao'
+MONGO_TABLE = 'jiepai'
 
 # 如果没有mongodb密码就不用写数据库密码了，如果有就需要填写一下
 GROUP_START = 1
