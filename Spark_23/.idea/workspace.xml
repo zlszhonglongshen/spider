@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="970214c5-6fbb-47d4-93eb-554d6002eee7" name="Default Changelist" comment="" />
+    <list default="true" id="970214c5-6fbb-47d4-93eb-554d6002eee7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/scala_sdk_2_11_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/ML/Kmeans01.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/WordCount2.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ML/Kmeans01$$anonfun$1$$anonfun$apply$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ML/Kmeans01$$anonfun$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ML/Kmeans01$$anonfun$main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ML/Kmeans01$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ML/Kmeans01.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WordCount2$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WordCount2.class" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,33 +30,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/WordCount2.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#43#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/ML/Kmeans01.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-              <folding>
-                <element signature="e#11#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -65,21 +58,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Spark_23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spark_23" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spark_23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -87,8 +66,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544679552807" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544679985740" />
+    <property name="last_opened_file_path" value="$USER_HOME$/NLP/Spark_23" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -144,12 +123,12 @@
       <workItem from="1544577014714" duration="1413000" />
       <workItem from="1544578819163" duration="7210000" />
       <workItem from="1544671698920" duration="841000" />
-      <workItem from="1544679479174" duration="417000" />
+      <workItem from="1544679479174" duration="528000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14316000" />
+    <option name="totallyTimeSpent" value="14427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1375" height="904" extended-state="6" />
@@ -163,7 +142,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32860824" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32860824" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -245,8 +224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/WordCount2.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="38">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#43#76#0" expanded="true" />
