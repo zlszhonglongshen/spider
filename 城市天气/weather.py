@@ -57,4 +57,4 @@ if __name__ == '__main__':
         url = get_url(city)
         html = get_content(url)
         result = get_data(html, city)
-        save_data(result, '\weather.csv')
+        save_data(result, 'weather.csv')

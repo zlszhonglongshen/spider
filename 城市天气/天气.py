@@ -42,6 +42,7 @@ def getweather(city):
         stdout = urllib.request.urlopen(url)
         weatherInfo = stdout.read().decode('utf-8')
         jsonData = json.loads(weatherInfo)
+        # print(jsonData)
         weatherlist = []
         # 读取JSON数据，添加到列表中
         szDate = jsonData["publish_time"]
@@ -58,7 +59,13 @@ def getweather(city):
         weatherlist.append(szTemp)
         szhumidity = str(int(jsonData["weather"]["humidity"])) + "%"
         weatherlist.append(szhumidity)
-        print("数据更新时间，天气，风向，风速，实时温度，相对湿度：")
+        szairpressure = str(jsonData["weather"]["airpressure"])
+        weatherlist.append(szairpressure)
+        szalert = str(jsonData["warn"]["alert"])
+        weatherlist.append(szalert)
+        szfmeans = str(jsonData["warn"]["fmeans"])
+        weatherlist.append(szfmeans)
+        print("数据更新时间，天气，风向，风速，实时温度，相对湿度,大气压,预警,温馨提示：")
         print(weatherlist)
         writefiles_weather(city,weatherlist)
     except urllib.error.URLError as e:
@@ -80,7 +87,7 @@ def getweather(city):
 def writefiles_weather(filename,weatherlist):
     try:
         #将获取的数据写入文件中，数据分别为数据更新时间，天气，风向，风速（m/s），实时温度（℃），相对湿度（%）。
-        with open("D:\mydata\data_weather\data_weather_"+filename+".txt","a",errors="ignore") as f:
+        with open("D:\data_weather_"+filename+".txt","a",errors="ignore") as f:
             for weather in weatherlist:
                 f.write(str(weather))
                 f.write(",")
