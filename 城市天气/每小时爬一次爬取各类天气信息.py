@@ -57,7 +57,7 @@ def getpm25(city):
         getpm25(city)
 def writefiles_pm25(filename,datatime,pm25list):
     #将获取的数据写入文件中，数据分别为时间，AQI指数，PM2.5，PM10，CO，NO2，SO2，O3。（单位：μg/m3，CO为mg/m3）
-    f = open("e:\data\data_pm25_"+filename+".txt", "a")
+    f = open("e:\data_pm25_"+filename+".txt", "a")
     f.write(datatime[0])
     f.write(",")
     for pm25 in pm25list:
@@ -106,7 +106,7 @@ def getweather(city,datatime):
         getweather(city, datatime)
 def writefiles_weather(filename,datatime,weatherlist):
     #将获取的数据写入文件中，数据分别为时间，天气状况，风向风速，实时温度，相对湿度。
-    f = open("e:\data\data_weather_"+filename+".txt", "a")
+    f = open("e:\data_weather_"+filename+".txt", "a")
     f.write(datatime[0])
     f.write(",")
     for weather in weatherlist:
@@ -118,14 +118,15 @@ def writefiles_weather(filename,datatime,weatherlist):
 #退出循环可用Ctrl+C键
 while True:
     print("开始工作！")
-    get_pm25_and_weather("beijing")
-    get_pm25_and_weather("tianjin")
-    get_pm25_and_weather("shijiazhuang")
-    get_pm25_and_weather("taiyuan")
-    get_pm25_and_weather("jinan")
-    get_pm25_and_weather("shenyang")
-    get_pm25_and_weather("huhehaote")
-    get_pm25_and_weather("zhengzhou")
+    get_pm25_and_weather("guangzhou")
+    # get_pm25_and_weather("beijing")
+    # get_pm25_and_weather("tianjin")
+    # get_pm25_and_weather("shijiazhuang")
+    # get_pm25_and_weather("taiyuan")
+    # get_pm25_and_weather("jinan")
+    # get_pm25_and_weather("shenyang")
+    # get_pm25_and_weather("huhehaote")
+    # get_pm25_and_weather("zhengzhou")
     #每一小时执行一次
     print("休息中……")
     print("\n")

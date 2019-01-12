@@ -20,7 +20,8 @@ from selenium import webdriver
 
 def get_url(city_name): #根据城市名字获取城市代码，最终返回城市URL
     url = 'http://www.weather.com.cn/weather/'
-    with open('C:\\Users\\johnson.zhong\\Documents\\GitHub\\spider\\城市天气\\city.txt', 'r', encoding='UTF-8') as fs:
+    # with open('C:\\Users\\johnson.zhong\\Documents\\GitHub\\spider\\城市天气\\city.txt', 'r', encoding='UTF-8') as fs:
+    with open('/work/johnson_folder/city.txt', 'r', encoding='UTF-8') as fs:
         lines = fs.readlines()
         for line in lines:
             if (city_name[0] in line):
@@ -63,8 +64,8 @@ def real_time_weather(url):
 
     html = BeautifulSoup(content, "html.parser")
     tem = html.find_all("div", class_="tem")
-    	# 经检查find_all方法返回的tem第一组数据为想要获取的数据
-    	# span区域为实时气温的数值，em区域为实时气温的单位
+    # 经检查find_all方法返回的tem第一组数据为想要获取的数据
+    # span区域为实时气温的数值，em区域为实时气温的单位
     result = tem[0].span.text + tem[0].em.text
     return result
 
@@ -81,7 +82,7 @@ def getPM25(doc):
     result = soup.find("div",{"class":'cbor_tips'})   # 空气质量描述
     replacechar = re.compile("<.*?>")  #为了将<>全部替换成空
     space = re.compile(" ")
-    print('AQI指数:' + aqi.string+'\t'+ 'PM2.5浓度:' + pm25.string +'\t'+ pm25danwei.string + '空气质量:' + quality.string+'\t' + space.sub("",replacechar.sub('',str(result))),file=doc)
+    print('AQI指数:' + aqi.string+'\t'+ 'PM2.5浓度:' + pm25.string +pm25danwei.string + '空气质量:' + quality.string+'\t' + space.sub("",replacechar.sub('',str(result))),file=doc)
  
 
 def get_data(city_name):
