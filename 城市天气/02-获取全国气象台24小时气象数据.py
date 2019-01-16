@@ -15,17 +15,17 @@ conn = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root
 
 c = conn.cursor()
 
-# c.execute('''create table weather
-#             (positionId int not null,
-#             name text not null,
-#             date_time date not null,
-#             temperature int,
-#             rain int,
-#             humidity int,
-#             windDirection int,
-#             windPower int,
-#             fullName text not null,
-#             );''')
+c.execute('''create table weather
+            (positionId varchar(20),
+            name varchar(20),
+            date_time varchar(20) ,
+            temperature varchar(20),
+            rain varchar(20),
+            humidity varchar(20),
+            windDirection varchar(20),
+            windPower varchar(20),            
+            fullName varchar(50) 
+            );''')
 
 
 def getPositionName(soup, num):  #soup：beautiful的soup对象，num城市编码
