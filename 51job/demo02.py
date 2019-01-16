@@ -23,7 +23,8 @@ def get(html):
 
 def savetosql(items):
     print('正在连接到服务器')
-    db = pymysql.connect('localhost', 'root', '', 'mysql', charset="utf8")
+    # db = pymysql.connect('localhost', 'root', '', 'mysql', charset="utf8")
+    db = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root', db='mysql', charset='utf8mb4')
     print('连接成功')
     cursor = db.cursor()
     cursor.execute('DROP TABLE IF EXISTS JOBS')
