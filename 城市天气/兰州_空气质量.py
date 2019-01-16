@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import re
 import numpy
 import csv
+import pandas as pd
+import time
 
 def getdatawithtablehead(url):
     """ 该函数用于获取带表头的数据 """
@@ -52,14 +54,22 @@ Sites.reverse()
 
 Dataset=getdatawithtablehead(Sites[0]) # 获取表头和第一个月度数据
 
-for url in Sites[1:]:
-    dataset=getdata(url)
-    Dataset=numpy.row_stack((Dataset,dataset)) # 获取所有月度数据
+Dataset = pd.DataFrame(Dataset) #转换成数据框
 
-csvfile=open("Dataset.csv","w+") # 创建csv文件用于保存数据
-try:
-    writer=csv.writer(csvfile)
-    for i in range(numpy.shape(Dataset)[0]):
-        writer.writerow((Dataset[i,:])) # 将数据逐行写入csv文件
-finally:
-    csvfile.close() # 关闭csv文件
+for url in Sites[1:]:
+    time.sleep(5)
+    dataset=getdata(url)
+    dataset = pd.DataFrame(dataset)
+    Dataset = pd.concat([Dataset,dataset],axis=0)# 获取所有月度数据
+
+    # Dataset=numpy.row_stack((Dataset,dataset)) 
+
+Dataset.to_csv("dataset.csv",encoding="gbk")
+
+# csvfile=open("Dataset.csv","w+") # 创建csv文件用于保存数据
+# try:
+#     writer=csv.writer(csvfile)
+#     for i in range(numpy.shape(Dataset)[0]):
+#         writer.writerow((Dataset[i,:])) # 将数据逐行写入csv文件
+# finally:
+#     csvfile.close() # 关闭csv文件
