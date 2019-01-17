@@ -1,11 +1,26 @@
 # -*- coding:utf-8 -*-
 import requests
 import re, pymysql
+import time
+
+
+db = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root', db='mysql', charset='utf8mb4') #连接数据库，设置数据库参数
+print('连接成功')
+cursor = db.cursor()
+cursor.execute('DROP TABLE IF EXISTS JOBS')
+SQL = '''CREATE TABLE JOBS( 
+    POSITION TEXT(1000) NOT NULL,
+    COMPANY TEXT(1000),
+    ADDRESS TEXT(1000),
+    SALARY TEXT(1000),
+    DATE TEXT(1000))'''
+cursor.execute(SQL)
 
 
 def get_content(page):
     url = 'http://search.51job.com/list/000000,000000,0000,00,9,99,%25E6%2595%25B0%25E6%258D%25AE%25E5%2588%2586%25E6%259E%2590,2,' + str(
         page) + '.html'
+    time.sleep(3)
     html = requests.get(url)
     s = requests.session()
     s.keep_alive = False
@@ -27,14 +42,6 @@ def savetosql(items):
     db = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root', db='mysql', charset='utf8mb4')
     print('连接成功')
     cursor = db.cursor()
-    cursor.execute('DROP TABLE IF EXISTS JOBS')
-    SQL = '''CREATE TABLE JOBS( 
-        POSITION TEXT(1000) NOT NULL,
-        COMPANY TEXT(1000),
-        ADDRESS TEXT(1000),
-        SALARY TEXT(1000),
-        DATE TEXT(1000))'''
-    cursor.execute(SQL)
     print('创建成功')
     for item in items:
         sql = "insert into JOBS values('%s','%s','%s','%s','%s')" % (item[0], item[1], item[2], item[3], item[4])

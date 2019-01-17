@@ -6,6 +6,7 @@ Created on Sat Jul 14 23:06:50 2018
 """
 
 import urllib
+from urllib.request import urlopen()
 import re
 import pymysql
 import sqlite3
@@ -17,7 +18,7 @@ def url_input(url):
     """
     爬取网页源码html信息
     """
-    get_html = urllib.urlopen(url)
+    get_html = urlopen(url)
     read_html = get_html.read()
     return read_html
     

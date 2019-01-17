@@ -23,12 +23,14 @@ class Cups():
         urls.extend([self._url.format(3, p, 1) for p in range(1, self._page)])
         for i, u in enumerate(urls):
             try:
-                j = json.loads(requests.get(u, headers=headers, timeout=2).text[15:])
+                # print((requests.get(u, headers=headers, timeout=2).text[25:-2]))
+                j = json.loads((requests.get(u, headers=headers, timeout=2).text[25:-2]),encoding="gbk")
+                print(j)
                 for i, v in enumerate(j['rateList']):
                     goods = (v['rateDate'], v['auctionSku'],
                              v['rateContent'].replace("<b>", "").replace("</b>", "").replace("&hellip", ""))
                     self._result.add(goods)
-                    print(i)
+                    print(v)
             except Exception as e:
                 print(e)
         pprint(self._result)
@@ -80,6 +82,6 @@ if __name__ == "__main__":
     url = "https://rate.tmall.com/list_detail_rate.htm?itemId=37457670144&spuId=249827344&" \
           "sellerId=470355944&order={}&currentPage={}&append=0&content={}"
     cups = Cups(url, 101, "cups.csv")
-    # cups.run()
-    # cups.clear()
-    cups.extract()
+    cups.run()
+    cups.clear()
+    # cups.extract()
