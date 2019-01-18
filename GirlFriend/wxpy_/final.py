@@ -100,7 +100,7 @@ def getPM25():
     result = soup.find("div", {"class": 'cbor_tips'})  # 空气质量描述
     replacechar = re.compile("<.*?>")  # 为了将<>全部替换成空
     space = re.compile(" ")
-    return quality.string,space.sub("", replacechar.sub('', str(result))).replace("温馨提示："+"\n","")
+    return quality.string,space.sub("", replacechar.sub('', str(result))).replace("\n"+"温馨提示："+"\n","")
 
 
 def get_data(city_name):
@@ -173,9 +173,9 @@ def start():
 try:
     now,weekday,weather,temperatureLow,temperatureHigh,winL,getPM25 = get_data("广州".split(' '))
     xingzuo_chunv,xingzuo_tianxie = start()
-    message = now+ "\n" + weekday + "\n" + weather \
-              + "\n"+ temperatureLow + "-"+ temperatureHigh+ "\n"+"空气质量："+getPM25[0]+\
-              getPM25[1]+"\n"+"风力等级："+winL + "\n\n"+ "金牛座今日运势："+xingzuo_chunv + "\n\n"+"天蝎座今日运势："+xingzuo_tianxie
+    message = "今天是："+now+ "\n" +"星期："+ weekday + "\n" + "天气："+weather \
+              + "\n"+ "温度："+temperatureLow + "-"+ temperatureHigh+ "\n"+"空气质量："+getPM25[0]+\
+              getPM25[1]+"风力等级："+winL + "\n"+ "金牛座今日运势："+xingzuo_chunv + "\n"+"天蝎座今日运势："+xingzuo_tianxie
     print(message)
 except:  # 抛出异常
     message = ""
@@ -198,5 +198,5 @@ def job():
     t.start()
 
 
-if __name__ == '__main__':
-    job()
+# if __name__ == '__main__':
+#     job()
