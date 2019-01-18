@@ -194,9 +194,10 @@ def job():
         print("Succeed Sending")
     else:
         print("Error sending")
-    t = Timer(30,job)
-    t.start()
+    time.sleep(10)
+    # t = Timer(30,job)
+    # t.start()
 
 
-# if __name__ == '__main__':
-#     job()
+if __name__ == '__main__':
+    job()
