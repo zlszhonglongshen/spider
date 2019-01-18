@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on 2019/1/18 22:51
+@Author: Johnson
+@Email:593956670@qq.com
+@File: final_work.py
+"""
+# -*- coding: utf-8 -*-
+"""
 Created on 2019/1/18 17:41
 @Author: Johnson
 @Email:593956670@qq.com
@@ -175,7 +182,7 @@ try:
     xingzuo_chunv,xingzuo_tianxie = start()
     message = "今天是："+now+ "\n" +"星期："+ weekday + "\n" + "天气："+weather \
               + "\n"+ "温度："+temperatureLow + "-"+ temperatureHigh+ "\n"+"空气质量："+getPM25[0]+\
-              getPM25[1]+"风力等级："+winL + "\n"+ "金牛座今日运势："+xingzuo_chunv + "\n"+"天蝎座今日运势："+xingzuo_tianxie
+              getPM25[1]+"风力等级："+winL + "\n"
     print(message)
 except:  # 抛出异常
     message = ""
@@ -189,7 +196,7 @@ ic.auto_login(hotReload=True)
 # userName = users[0]['UserName']
 
 
-names = ["Test",'Ruby']
+names = ["Test","无限极数据科学"]
 userName = []
 
 for i in names:
