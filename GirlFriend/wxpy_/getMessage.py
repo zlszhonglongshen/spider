@@ -23,7 +23,7 @@ from getTime import startPro
 
 def get_url(city_name):  # 根据城市名字获取城市代码，最终返回城市URL
     url = 'http://www.weather.com.cn/weather/'
-    with open('C:\\Users\\johnson.zhong\\Documents\\GitHub\\spider\\城市天气\\city.txt', 'r', encoding='UTF-8') as fs:
+    with open('C:\\Users\\johnson.zhong\\Documents\\GitHub\\spider\\城市天气的那些事\\city.txt', 'r', encoding='UTF-8') as fs:
         # with open('/work/johnson_folder/city.txt', 'r', encoding='UTF-8') as fs:
         lines = fs.readlines()
         for line in lines:
