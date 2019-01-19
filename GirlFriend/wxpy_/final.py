@@ -178,7 +178,7 @@ inLoveDays = (todayDate - inLoveDate).days
 try:
     now,weekday,weather,temperatureLow,temperatureHigh,winL,getPM25 = get_data("广州".split(' '))
     xingzuo_chunv,xingzuo_tianxie = start()
-    message = "今天是："+now+ "\n" +"我们已经相恋了：{}天,爱你哟，么么哒！".format(str(inLoveDays))+"\n"+"星期："+ weekday + "\n" + "天气："+weather \
+    message = "今天是："+now+ "\n" +"我们已经相恋：{}天,爱你哟，么么哒！".format(str(inLoveDays))+"\n"+"星期："+ weekday + "\n" + "天气："+weather \
               + "\n"+ "温度："+temperatureLow + "-"+ temperatureHigh+ "\n"+"空气质量："+getPM25[0]+\
               getPM25[1]+"风力等级："+winL + "\n"+ "金牛座今日运势："+xingzuo_chunv + "\n"+"天蝎座今日运势："+xingzuo_tianxie
     print(message)
@@ -194,7 +194,7 @@ ic.auto_login(hotReload=True)
 # userName = users[0]['UserName']
 
 
-names = ["Test"]
+names = ["Test",'Ruby']
 userName = []
 
 for i in names:

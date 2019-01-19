@@ -181,7 +181,7 @@ try:
     now,weekday,weather,temperatureLow,temperatureHigh,winL,getPM25 = get_data("广州".split(' '))
     xingzuo_chunv,xingzuo_tianxie = start()
     message = "今天是："+now+ "\n" +"星期："+ weekday + "\n" + "天气："+weather \
-              + "\n"+ "温度："+temperatureLow + "-"+ temperatureHigh+ "\n"+"空气质量："+getPM25[0]+\
+              + "\n"+ "温度："+temperatureLow + "-"+ temperatureHigh+"℃"+ "\n"+"空气质量："+getPM25[0]+\
               getPM25[1]+"风力等级："+winL + "\n"
     print(message)
 except:  # 抛出异常
@@ -200,12 +200,15 @@ names = ["Test","无限极数据科学"]
 userName = []
 
 for i in names:
-    if len(ic.search_friends(name=i))!=0:
-        NameTemp = ic.search_friends(name=i)[0]['UserName']
-        userName.append(NameTemp)
-    else:
-        NameTemp = ic.search_chatrooms(name=i)[0]['UserName']
-        userName.append(NameTemp)
+    try:
+        if len(ic.search_friends(name=i))!=0:
+            NameTemp = ic.search_friends(name=i)[0]['UserName']
+            userName.append(NameTemp)
+        else:
+            NameTemp = ic.search_chatrooms(name=i)[0]['UserName']
+            userName.append(NameTemp)
+    except:
+        pass
 
 def job():
     for i in userName:
