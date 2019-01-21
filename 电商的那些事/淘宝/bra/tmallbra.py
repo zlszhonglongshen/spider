@@ -4,12 +4,14 @@ Created on 2019/1/19 17:57
 @Author: Johnson
 @Email:593956670@qq.com
 @File: tmallbra.py
+https://blog.csdn.net/qq_41888542/article/details/83714276
 """
 from common import Common
 from bs4 import BeautifulSoup
 import json
 import re
 import pymysql
+
 
 common = Common()
 
