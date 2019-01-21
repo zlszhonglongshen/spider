@@ -5,7 +5,6 @@
 @Description: 
 @Email: 593956670@qq.com
 '''
-#coding:utf-8
 import re
 import urllib
 import chardet
