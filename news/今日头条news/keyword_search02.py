@@ -10,6 +10,7 @@ import re
 import urllib
 import chardet
 from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import time
 import json
 import pymysql
@@ -83,8 +84,27 @@ def parse_index_page(html):
         params.append([title, source, countgood,abstract,datetime])
     return params
 
+#获取URL的详情
+def get_page_detail(url):
+    try:
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+        }
+        response = requests.get(url,headers = headers)
+        if response.status_code==200:
+            return response.text
+        return None
+    except Exception as e:
+        print("请求详情页面失败",url)
+        return None
 
-#
+#解析获取的html为json格式
+def parse_page_detail(html,url):
+    soup = BeautifulSoup(html,"lxml")
+    title = soup.select('title')[0].get_text()
+
+
+
 # #解析数据，获取想要的数据
 # def parse_index_page(html):
 #     params = []
