@@ -147,6 +147,8 @@ if __name__=='__main__':
     pool=Pool()
     pool.map(main,groups)
 
+
+'''
 2.config.py
 
 #存入MongoDB
@@ -160,3 +162,4 @@ GROUP_END=20
 
 #搜索的关键字
 KEYWORD='街拍
+'''
