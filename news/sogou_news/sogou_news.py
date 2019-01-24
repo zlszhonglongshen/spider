@@ -111,7 +111,7 @@ class SogouNews:
                 continue
 
         file_name = self.now_time + "_sogou_news_%s" % keyword + ".txt"
-        with open("./" + file_name, "w") as f:
+        with open(file_name, "w") as f:
             f.write(json.dumps(news_datas))
 
         return news_datas
@@ -170,7 +170,7 @@ class SogouNews:
         self.all_data.extend(content_datas)
 
         file_name = self.now_time + "_sogou_news_all_%s" % keyword + ".txt"
-        with open("./" + file_name, 'w') as f:
+        with open(file_name, 'w') as f:
             f.write(json.dumps(content_datas))
 
     def time_in(self, time_):
@@ -185,7 +185,7 @@ class SogouNews:
 
     def write_csv(self):
         file_name = self.now_time + "_sogou_news.csv"
-        with open("./" + file_name, "w", encoding = 'utf-8', newline = '') as csv_file:
+        with open(file_name, "w", encoding = 'utf-8', newline = '') as csv_file:
             csv_writer = csv.writer(csv_file)
             header_row = ["keyword", "time", "from", "title", "content", "link"]
             csv_writer.writerow(header_row)
