@@ -51,14 +51,16 @@ class Article(object):
 
 
 # 连接数据库
-connect = pymysql.Connect(
-    host=db_config['host'],
-    port=int(db_config['port']),
-    user=db_config['username'],
-    passwd=db_config['password'],
-    db=db_config['database'],
-    charset=db_config['charset']
-)
+# connect = pymysql.Connect(
+#     host=db_config['host'],
+#     port=int(db_config['port']),
+#     user=db_config['username'],
+#     passwd=db_config['password'],
+#     db=db_config['database'],
+#     charset=db_config['charset']
+# )
+
+connect = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root', db='mysql', charset='utf8mb4')
 cursor = connect.cursor()
 
 #处理URL信息
