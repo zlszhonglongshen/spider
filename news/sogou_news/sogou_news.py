@@ -154,7 +154,7 @@ class SogouNews:
             content = ""
             print("正在抓取页面内容：%s...%s...页面\t%s..." % (keyword, new["title"], new["url"]))
             try:
-                r = requests.get(url, headers = self.headers, proxies = self.proxies)
+                r = requests.get(url, headers = self.headers)
                 soup = BeautifulSoup(self.encode_text(r), "lxml")
                 for c in soup.find_all("p"):
                     content += c.get_text()
