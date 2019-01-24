@@ -178,12 +178,13 @@ def parse_page_detail_html(url):
     html = get_page_detail(url)  # 获取html内容
     soup = bs(html, "lxml")
     try:
-        content = []
+        content = ''
         p_list = soup.find_all('p')
         for s in p_list:
             # content.append(re.sub("[A-Za-z0-9\!\%\[\]\,\。\\(\\)\\（\\）\'\'\,\，\ ]", "", s.string))
             # content.append(format_str(s.string))
-            content.append(''.join(re.findall(pattern,s.string))) #只保留中文
+            # content.append(''.join(re.findall(pattern,s.string))) #只保留中文
+            content += s.get_text()+"\n"
 
         print(content)
         return content
