@@ -18,6 +18,7 @@ from  urllib.parse import urlencode
 from requests import RequestException
 from urllib.request import urlopen
 import chardet
+from selenium import webdriver
 
 # 需要指定编码集,不然会出异常!!!(很重要)
 #db = pymysql.connect("localhost", "root", "", "mysql", use_unicode=True, charset='utf8mb4')
@@ -26,33 +27,27 @@ db = pymysql.connect(host='172.20.71.35', port=3306, user='root', passwd='root',
 cursor = db.cursor()
 
 
-def is_chinese(uchar):
-    """判断一个unicode是否是汉字"""
-    if uchar >= u'\u4e00' and uchar <= u'\u9fa5':
-        return True
+def encode_text(req):
+    if req.encoding == 'ISO-8859-1':
+        encodings = requests.utils.get_encodings_from_content(req.text)
+        if encodings:
+            encoding = encodings[0]
+        else:
+            encoding = req.apparent_encoding
     else:
-        return False
+        encoding = "utf-8"
+    encode_content = req.content.decode(encoding, 'replace').encode('utf-8', 'replace')
+    return encode_content
 
-def is_number(uchar):
-    """判断一个unicode是否是数字"""
-    if uchar >= u'\u0030' and uchar <= u'\u0039':
-        return True
-    else:
-        return False
 
-def is_alphabet(uchar):
-    """判断一个unicode是否是英文字母"""
-    if (uchar >= u'\u0041' and uchar <= u'\u005a') or (uchar >= u'\u0061' and uchar <= u'\u007a'):
-        return True
-    else:
-        return False
-def format_str(content):
-    content_str = ''
-    for i in content:
-        if is_chinese(i):
-            content_str = content_str+i
-    return content_str
-
+def use_driver_content(url):
+    driver = webdriver.Chrome('C:\\Program Files (x86)\\Google\Chrome\\Application\\chromedriver.exe')
+    driver.get(url)
+    content = ""
+    for l in driver.find_elements_by_xpath("//p"):
+        content += l.text
+    driver.close()
+    return content
 
 
 #构造请求参数，模拟请求
@@ -133,11 +128,12 @@ def parse_index_page(html):
                 source = item['source']
             if 'article_url' in item:  # 资源链接
                 url = item['article_url']
-                content = parse_page_detail_toutiao(url)
-                # if url[7:14]=='toutiao':
-                #     content = parse_page_detail_toutiao(url)  # 解析文章内容
-                # else:
-                #     content = parse_page_detail_html(url)
+                # content = parse_page_detail_html(url)
+                # print(url[7:14])
+                if url[7:14]=='toutiao':
+                    content = parse_page_detail_toutiao(url)  # 解析文章内容
+                else:
+                    content = parse_page_detail_html(url)     #解析文章内容
             if 'share_url' in item:  # 分享链接,可作资源链接用
                 share_url = item['share_url']
             if 'keyword' in item:  # 所属关键词
@@ -150,6 +146,7 @@ def parse_index_page(html):
                 abstract = item['abstract'] #文章摘要
             if 'datetime' in item:
                 datetime = item['datetime'] #文章发表时间
+                print(title, source, url, share_url, keyword_, countgood, has_video,abstract,datetime,content)
                 params.append([title, source, url, share_url, keyword_, countgood, has_video,abstract,datetime,content])
                 # print(params)
         return params
@@ -162,9 +159,15 @@ def parse_page_detail_toutiao(url):
     :return: 解析文章具体内容
     '''
     html = get_page_detail(url) #获取html内容
-    soup = bs(html,"lxml")
+    pattern = re.compile('[[0-9\u4e00-\u9fa5]+')
     try:
-        content = soup.find("div", class_="article-content").get_text()
+        a = re.findall(r"articleInfo:.*content:(.*?)groupId.*commentInfo", str(html), re.S) #匹配出想要的内容
+        content = "".join(pattern.findall(a[0])) #列表元素合并
+        # soup = bs(html,"lxml")
+        # try:
+        #     content = soup.find("div", class_="article-content").get_text()
+        # except:
+        #     pass
         return content
     except:
         pass
@@ -174,22 +177,28 @@ def parse_page_detail_html(url):
         :param html:
         :return: 解析文章具体内容
         '''
-    pattern = re.compile('[\u4e00-\u9fa5]+')
-    html = get_page_detail(url)  # 获取html内容
-    soup = bs(html, "lxml")
-    try:
-        content = ''
-        p_list = soup.find_all('p')
-        for s in p_list:
-            # content.append(re.sub("[A-Za-z0-9\!\%\[\]\,\。\\(\\)\\（\\）\'\'\,\，\ ]", "", s.string))
-            # content.append(format_str(s.string))
-            # content.append(''.join(re.findall(pattern,s.string))) #只保留中文
-            content += s.get_text()+"\n"
+    pattern = re.compile('[0-9\u4e00-\u9fa5]+') #保留字符串中的所有中文字符
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36"
+    }
 
-        print(content)
-        return content
+    # html = get_page_detail(url)  #****** 获取html内容******
+    html = requests.get(url, headers=headers)
+    soup = bs(encode_text(html), "lxml")
+    content = ''
+    try:
+        p_list = soup.find_all("p")
+        for s in p_list:
+            # content.append(re.sub("[A-Za-z0-9\!\%\[\]\,\。\\(\\)\\（\\）\'\'\,\，\ ]", "", s.string)) #只保留中文
+            # content.append(format_str(s.string))                  #只保留中文
+            # content.append(''.join(re.findall(pattern,s.string))) #只保留中文
+            content += s.get_text()
+        # if content=="":
+        #     content = use_driver_content(url)
     except:
         pass
+    return ''.join(re.findall(pattern,content))
 
 def get_page_detail(url):
     '''
@@ -198,15 +207,20 @@ def get_page_detail(url):
     :return:
     '''
     try:
+        # headers = {
+        #         #     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) '
+        #         #                   'Chrome/52.0.2743.116 Safari/537.36 '
+        #         # }
+
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Chrome/52.0.2743.116 Safari/537.36 '
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36"
         }
         a = urlopen(url).read()
         b = chardet.detect(a)  #检测网页的标注是什么格式
 
         response = requests.get(url, headers=headers)
-        response.encoding = "utf-8"
+        # response.encoding = "utf-8"
         # print(b.get("encoding"))
         # if b.get("encoding")=="ascii":
         #     response.encoding = "gbk"
