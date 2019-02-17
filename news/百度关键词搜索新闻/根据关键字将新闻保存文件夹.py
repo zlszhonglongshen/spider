@@ -135,6 +135,7 @@ def extract_news_content(web_url, file_name):
 # 抓取百度新闻搜索结果:中文搜索，前10页，url：key=关键词
 def search(key_word):
     search_url = 'http://news.baidu.com/ns?word=key_word&tn=news&from=news&cl=2&rn=20&ct=1'
+    print(search_url)
     # req = urllib2.urlopen(search_url.replace('key_word',key_word))
     req=requests.get(search_url.replace('key_word',key_word))
     time.sleep(2)
