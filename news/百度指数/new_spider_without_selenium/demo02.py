@@ -27,7 +27,7 @@ if __name__ == "__main__":
     Df = pd.DataFrame()
     starttime = '2018-12-13'
     endtime = '2019-02-15'
-    for i in ["无限极", "传销", "保健品", "权健"]:
+    for i in ["无限极","直销", "保健品" ,"权健","华林酸碱平"]:
         baidu_index = BaiduIndex(i, starttime,endtime, 0)
         Temp = pd.DataFrame()
         for data in baidu_index(i, 'all'):

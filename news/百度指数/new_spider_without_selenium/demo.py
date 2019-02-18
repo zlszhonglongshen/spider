@@ -16,7 +16,7 @@ if __name__ == "__main__":
     # print(BaiduIndex.city_code)
     # print(BaiduIndex.province_code)
 
-    baidu_index = BaiduIndex(["无限极","直销 无限极", "保健品" ,"权健"], '2018-12-13', '2019-02-15',0)
+    baidu_index = BaiduIndex(["无限极","直销", "保健品" ,"权健","华林酸碱平"], '2018-12-13', '2019-02-15',0)
 
 
     无限极 = pd.DataFrame()
