@@ -34,14 +34,13 @@ def init_spider(keyword):
     模拟登陆
     """
     url = 'http://index.baidu.com/'
-    driver = webdriver.Chrome(executable_path='C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe')
+    driver = webdriver.Chrome(executable_path='chromedriver.exe')
     driver.get(url)
-    cookieList = ['BAIDUID=15B7F3AE4653F16C918E6EE2AE808C51:FG=1; BIDUPSID=15B7F3AE4653F16C918E6EE2AE808C51; PSTM=1550114140; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; PSINO=6; delPer=0; BDUSS=VuQUpIS1RJTHJaTzlwWkUtLUk2Qkx-bHp0SEFTNWtMVWNyTU5OOUplRUc0STFjQVFBQUFBJCQAAAAAAAAAAAEAAAAZzAAp0MTA5DIwODAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZTZlwGU2ZcRF; bdindexid=nuj0eigg5u6dlk6nn8hd141k67; BDRCVFR[C0p6oIjvx-c]=I67x6TjHwwYf0; H_PS_PSSID=26523_1457_21106_26350_28414; BDRCVFR[feWj1Vr5u3D]=I67x6TjHwwYf0; PS_REFER=1']
-    for cookie in cookieList:
-        print(cookie)
-        driver.add_cookie(cookie)
+
+    COOKIES = 'BAIDUID=15B7F3AE4653F16C918E6EE2AE808C51:FG=1; BIDUPSID=15B7F3AE4653F16C918E6EE2AE808C51; PSTM=1550114140; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; PSINO=6; delPer=0; BDUSS=VuQUpIS1RJTHJaTzlwWkUtLUk2Qkx-bHp0SEFTNWtMVWNyTU5OOUplRUc0STFjQVFBQUFBJCQAAAAAAAAAAAEAAAAZzAAp0MTA5DIwODAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZTZlwGU2ZcRF; bdindexid=nuj0eigg5u6dlk6nn8hd141k67; BDRCVFR[C0p6oIjvx-c]=I67x6TjHwwYf0; H_PS_PSSID=26523_1457_21106_26350_28414; BDRCVFR[feWj1Vr5u3D]=I67x6TjHwwYf0; PS_REFER=1'
+    driver.add_cookie(COOKIES)
     driver.get(url)
-    time.sleep(3)
+    time.sleep(10)
     driver.refresh()
     #输入关键词
     WebDriverWait(driver, 10, 0.5).until(
@@ -196,7 +195,7 @@ def defaultIndex(driver):
 第二步将cookies放在列表中
 '''
 
-# get_cookie()
+get_cookie()
 
 #多个关键词以逗号隔开
 keyword='无限极'
