@@ -9,7 +9,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显�
 
 client = pymongo.MongoClient('localhost')
 db = client['test']
-table = db['python']
+table = db['python_人脸属性相关']
 columns = ['zwmc',
            'gsmc',
            'zwyx',

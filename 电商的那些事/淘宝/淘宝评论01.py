@@ -3,7 +3,7 @@ import re
 import requests
 
 url = 'https://s.taobao.com/search'
-payload = {'q': 'python','s': '1','ie':'utf8'}  #字典传递url参数
+payload = {'q': 'python_人脸属性相关','s': '1','ie':'utf8'}  #字典传递url参数
 file = open('taobao_test.txt','w',encoding='utf-8')
 
 for k in range(0,100):        #100次，就是100个页的商品数据

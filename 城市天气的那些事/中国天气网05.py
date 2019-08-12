@@ -7,7 +7,7 @@ Created on Sat Jan 12 13:19:35 2019
 
 '''
 抓取每天的天气数据
-python 3.6.2
+python_人脸属性相关 3.6.2
 url:http://www.weather.com.cn/weather1d/101190401.shtml
 '''
 import json

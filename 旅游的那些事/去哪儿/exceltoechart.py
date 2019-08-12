@@ -1,4 +1,4 @@
-#! /usr/bin/env python  
+#! /usr/bin/env python_人脸属性相关
 #coding=utf-8  
 import xlrd
 import operator

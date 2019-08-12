@@ -28,7 +28,7 @@ class KeysSpider(scrapy.Spider):
         for kd in keywords[0][u'技术'][0]:
             yield scrapy.FormRequest(next_url.format(kd.encode('utf-8')),callback=self.parse_json_link,meta={'kd':kd},dont_filter=True)
         #3.爬去某指定类别，如python
-        # yield scrapy.Request("http://www.lagou.com/jobs/positionAjax.json?kd=python",callback=self.parse_json_link,meta={'kd':"python",'dont_redirect': True,"handle_httpstatus_list": [302]},dont_filter=True)
+        # yield scrapy.Request("http://www.lagou.com/jobs/positionAjax.json?kd=python",callback=self.parse_json_link,meta={'kd':"python_人脸属性相关",'dont_redirect': True,"handle_httpstatus_list": [302]},dont_filter=True)
 
     def parse_json_link(self,response):
         kd = response.meta['kd']

@@ -45,7 +45,7 @@ try:
     xrange
     range = xrange
 except:
-    # python 3
+    # python_人脸属性相关 3
     pass
 
 

@@ -264,7 +264,7 @@ if __name__ == "__main__":
     # 每个字大约占横坐标12.5这样
     # 按照字节可自行更改切割横坐标的大小rangle
     # keyword = input("请输入查询关键字：")
-    keyword = "python"
+    keyword = "python_人脸属性相关"
     # sel = int(input("查询7天请按0，30天请按1，90天请按2，半年请按3，全部请按4："))
     sel = int(0)
     day = 0

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python_人脸属性相关
 #_*_ coding: utf-8_*_
 # In[ ]:
 import warnings

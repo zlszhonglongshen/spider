@@ -23,7 +23,7 @@ db_config = {
     'port': '3310',
     'username': 'woider',
     'password': '3243',
-    'database': 'python',
+    'database': 'python_人脸属性相关',
     'charset': 'utf8'
 }
 

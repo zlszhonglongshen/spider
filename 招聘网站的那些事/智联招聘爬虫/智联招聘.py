@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 TOTAL_PAGE_NUMBER = 90  # PAGE_NUMBER: total number of pages，可进行修改
 
-KEYWORDS = ['大数据', 'python', '投资经理'] # 需爬取的关键字可以自己添加或修改
+KEYWORDS = ['大数据', 'python_人脸属性相关', '投资经理'] # 需爬取的关键字可以自己添加或修改
 
 # 爬取主要城市的记录
 ADDRESS = ['全国', '北京', '上海', '广州', '深圳',

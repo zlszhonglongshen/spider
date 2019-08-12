@@ -91,7 +91,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
     'coolscrapy.pipelines.ArticleDataBasePipeline': 5,
 }
-# linux pip install MySQL-python
+# linux pip install MySQL-python_人脸属性相关
 DATABASE = {'drivername': 'mysql',
             'host': '192.168.203.95',
             'port': '3306',

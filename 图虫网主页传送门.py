@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python_人脸属性相关
 # coding:utf-8
 
 import urllib2, time, uuid, urllib, os, sys, re
